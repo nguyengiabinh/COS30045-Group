@@ -1,0 +1,27 @@
+body {
+    max-width: 1000px;
+    margin: auto;
+    min-width: 1000px;
+    font-family: Arial, Helvetica, sans-serif;
+
+}
+
+h1 {
+    font-weight: 1000;
+    color: mediumseagreen;
+
+}
+
+.img {
+    display: block;
+    margin: 0 auto;
+    border: 1px solid black;
+}
+
+.cText {
+    font-size: 12px;
+}
+
+footer {
+    background-color: lightgrey;
+}
