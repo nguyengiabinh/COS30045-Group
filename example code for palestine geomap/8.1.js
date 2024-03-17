@@ -37,15 +37,24 @@ d3.json("palestine-with-regions_1504.geojson").then(function (json) {
 
 
 d3.csv("event_data_pse.csv", function(d) {
-    return {
-        lat: +d.latitude,
-        long: +d.longitude,
-        event_name: d.event_name 
+    // Convert latitude and longitude to numbers
+    const lat = +d.latitude;
+    const long = +d.longitude;
+
+    // Check if latitude and longitude are valid numbers
+    if (!isNaN(lat) && !isNaN(long)) {
+        return {
+            lat: lat,
+            long: long,
+            event_name: d.event_name
+        };
     }
 }).then(function(data) {
+    // Filter out any invalid or missing data points
+    const validData = data.filter(d => d !== undefined);
 
     svg.selectAll("circle")
-        .data(data)
+        .data(validData)
         .enter()
         .append("circle")
         .attr("cx", function(d, i) {
