@@ -38,15 +38,22 @@ d3.csv("migration in a different format.csv", function(d) {
 
 function lineChart(dataset2) {
     // Set the x and y scale.
+    // Set the x and y scale.
     var xScale = d3.scaleTime()
         .domain([
-            d3.min(dataset2, function(d) { return d.date; }),
-            d3.max(dataset2, function(d) { return d.date; })
+            d3.min(dataset2, function(d) { 
+                return d.date; 
+            }),
+            d3.max(dataset2, function(d) { 
+                return d.date; 
+            })
         ])
         .range([padding, w - padding]);
 
     var yScale = d3.scaleLinear()
-        .domain([0, d3.max(dataset2, function(d) { return d.value; })])
+        .domain([0, d3.max(dataset2, function(d) {
+             return d.value; 
+            })])
         .range([h - padding, padding]);
 
     var xAxis = d3.axisBottom()
@@ -62,8 +69,12 @@ function lineChart(dataset2) {
         .attr("class", "hline")
         .attr("x1", padding)
         .attr("x2", w - padding)
-        .attr("y1", function(d) { return yScale(d); })
-        .attr("y2", function(d) { return yScale(d); })
+        .attr("y1", function(d) { 
+            return yScale(d); 
+        })
+        .attr("y2", function(d) { 
+            return yScale(d); 
+        })
         .style("stroke", "#ddd")
         .style("stroke-width", 0.5);
 
@@ -72,8 +83,12 @@ function lineChart(dataset2) {
         .data(xScale.ticks())
         .enter().append("line")
         .attr("class", "vline")
-        .attr("x1", function(d) { return xScale(d); })
-        .attr("x2", function(d) { return xScale(d); })
+        .attr("x1", function(d) { 
+            return xScale(d); 
+        })
+        .attr("x2", function(d) { 
+            return xScale(d); 
+        })
         .attr("y1", padding)
         .attr("y2", h - padding)
         .style("stroke", "#ddd")
@@ -91,8 +106,12 @@ function lineChart(dataset2) {
 
     // Draw line
     var line = d3.line()
-        .x(function(d) { return xScale(d.date); }) 
-        .y(function(d) { return yScale(d.value); });
+        .x(function(d) { 
+            return xScale(d.date); 
+        }) 
+        .y(function(d) { 
+            return yScale(d.value); 
+        });
 
     svg.append("path")
         .datum(dataset2)
@@ -138,8 +157,12 @@ function btn2021() {
         .attr("class", "hline")
         .attr("x1", padding)
         .attr("x2", w - padding)
-        .attr("y1", function(d) { return yScale(d); })
-        .attr("y2", function(d) { return yScale(d); })
+        .attr("y1", function(d) { 
+            return yScale(d); 
+        })
+        .attr("y2", function(d) { 
+            return yScale(d); 
+        })
         .style("stroke", "#ddd")
         .style("stroke-width", 0.5);
 
@@ -148,8 +171,12 @@ function btn2021() {
         .data(xScale.ticks())
         .enter().append("line")
         .attr("class", "vline")
-        .attr("x1", function(d) { return xScale(d); })
-        .attr("x2", function(d) { return xScale(d); })
+        .attr("x1", function(d) { 
+            return xScale(d); 
+        })
+        .attr("x2", function(d) { 
+            return xScale(d); 
+        })
         .attr("y1", padding)
         .attr("y2", h - padding)
         .style("stroke", "#ddd")
@@ -167,8 +194,12 @@ function btn2021() {
 
     // Draw lines for 2021
     var line = d3.line()
-        .x(function(d) { return xScale(d.month); })
-        .y(function(d) { return yScale(d["2021"]); });
+        .x(function(d) { 
+            return xScale(d.month); 
+        })
+        .y(function(d) { 
+            return yScale(d["2021"]); 
+        });
 
     svg.append("path")
         .datum(dataset)
@@ -183,8 +214,12 @@ function btn2021() {
         .enter()
         .append("circle")
         .attr("class", "circle-2021")
-        .attr("cx", function(d) { return xScale(d.month); })
-        .attr("cy", function(d) { return yScale(d["2021"]); })
+        .attr("cx", function(d) { 
+            return xScale(d.month); 
+        })
+        .attr("cy", function(d) {
+            return yScale(d["2021"]);
+        })
         .attr("r", 4)
         .style("fill", "#000080")
         .style("stroke-width", 0);
@@ -224,8 +259,12 @@ function btn2022() {
         .attr("class", "hline")
         .attr("x1", padding)
         .attr("x2", w - padding)
-        .attr("y1", function(d) { return yScale(d); })
-        .attr("y2", function(d) { return yScale(d); })
+        .attr("y1", function(d) { 
+            return yScale(d); 
+        })
+        .attr("y2", function(d) { 
+            return yScale(d); 
+        })
         .style("stroke", "#ddd")
         .style("stroke-width", 0.5);
 
@@ -234,8 +273,12 @@ function btn2022() {
         .data(xScale.ticks())
         .enter().append("line")
         .attr("class", "vline")
-        .attr("x1", function(d) { return xScale(d); })
-        .attr("x2", function(d) { return xScale(d); })
+        .attr("x1", function(d) { 
+            return xScale(d); 
+        })
+        .attr("x2", function(d) { 
+            return xScale(d); 
+        })
         .attr("y1", padding)
         .attr("y2", h - padding)
         .style("stroke", "#ddd")
@@ -253,8 +296,12 @@ function btn2022() {
 
     // Draw lines for 2021
     var line = d3.line()
-        .x(function(d) { return xScale(d.month); })
-        .y(function(d) { return yScale(d["2022"]); });
+        .x(function(d) { 
+            return xScale(d.month); 
+        })
+        .y(function(d) { 
+            return yScale(d["2022"]); 
+        });
 
     svg.append("path")
         .datum(dataset)
@@ -269,8 +316,12 @@ function btn2022() {
         .enter()
         .append("circle")
         .attr("class", "circle-2022")
-        .attr("cx", function(d) { return xScale(d.month); })
-        .attr("cy", function(d) { return yScale(d["2022"]); })
+        .attr("cx", function(d) { 
+            return xScale(d.month); 
+        })
+        .attr("cy", function(d) { 
+            return yScale(d["2022"]); 
+        })
         .attr("r", 4)
         .style("fill", "#990000")
         .style("stroke-width", 0);
@@ -310,8 +361,12 @@ function btn2023() {
         .attr("class", "hline")
         .attr("x1", padding)
         .attr("x2", w - padding)
-        .attr("y1", function(d) { return yScale(d); })
-        .attr("y2", function(d) { return yScale(d); })
+        .attr("y1", function(d) {
+            return yScale(d); 
+        })
+        .attr("y2", function(d) { 
+            return yScale(d); 
+        })
         .style("stroke", "#ddd")
         .style("stroke-width", 0.5);
 
@@ -320,8 +375,12 @@ function btn2023() {
         .data(xScale.ticks())
         .enter().append("line")
         .attr("class", "vline")
-        .attr("x1", function(d) { return xScale(d); })
-        .attr("x2", function(d) { return xScale(d); })
+        .attr("x1", function(d) { 
+            return xScale(d); 
+        })
+        .attr("x2", function(d) { 
+            return xScale(d); 
+        })
         .attr("y1", padding)
         .attr("y2", h - padding)
         .style("stroke", "#ddd")
@@ -339,8 +398,12 @@ function btn2023() {
 
     // Draw lines for 2021
     var line = d3.line()
-        .x(function(d) { return xScale(d.month); })
-        .y(function(d) { return yScale(d["2023"]); });
+        .x(function(d) { 
+            return xScale(d.month); 
+        })
+        .y(function(d) { 
+            return yScale(d["2023"]); 
+        });
 
     svg.append("path")
         .datum(dataset)
@@ -355,8 +418,12 @@ function btn2023() {
         .enter()
         .append("circle")
         .attr("class", "circle-2023")
-        .attr("cx", function(d) { return xScale(d.month); })
-        .attr("cy", function(d) { return yScale(d["2023"]); })
+        .attr("cx", function(d) { 
+            return xScale(d.month); 
+        })
+        .attr("cy", function(d) { 
+            return yScale(d["2023"]); 
+        })
         .attr("r", 4)
         .style("fill", "#000080")
         .style("stroke-width", 0);
@@ -396,8 +463,12 @@ function btn2024() {
         .attr("class", "hline")
         .attr("x1", padding)
         .attr("x2", w - padding)
-        .attr("y1", function(d) { return yScale(d); })
-        .attr("y2", function(d) { return yScale(d); })
+        .attr("y1", function(d) { 
+            return yScale(d); 
+        })
+        .attr("y2", function(d) { 
+            return yScale(d); 
+        })
         .style("stroke", "#ddd")
         .style("stroke-width", 0.5);
 
@@ -406,8 +477,12 @@ function btn2024() {
         .data(xScale.ticks())
         .enter().append("line")
         .attr("class", "vline")
-        .attr("x1", function(d) { return xScale(d); })
-        .attr("x2", function(d) { return xScale(d); })
+        .attr("x1", function(d) { 
+            return xScale(d); 
+        })
+        .attr("x2", function(d) { 
+            return xScale(d); 
+        })
         .attr("y1", padding)
         .attr("y2", h - padding)
         .style("stroke", "#ddd")
@@ -425,11 +500,17 @@ function btn2024() {
 
     // Draw lines for 2021
     var line = d3.line()
-        .x(function(d) { return xScale(d.month); })
-        .y(function(d) { return yScale(d["2024"]); });
+        .x(function(d) { 
+            return xScale(d.month); 
+        })
+        .y(function(d) { 
+            return yScale(d["2024"]); 
+        });
 
     svg.append("path")
-        .datum(dataset.filter(function(d) { return d.month <= 3; })) // Filter data for the first three months
+        .datum(dataset.filter(function(d) { 
+            return d.month <= 3; 
+        })) // Filter data for the first three months
         .attr("class", "line")
         .attr("d", line)
         .style("stroke", "#4169E1")
@@ -437,12 +518,18 @@ function btn2024() {
 
     // Append circles for each data point
     svg.selectAll(".circle-2024")
-        .data(dataset.filter(function(d) { return d.month <= 3; })) // Filter data for the first three months
+        .data(dataset.filter(function(d) { 
+            return d.month <= 3; 
+        })) // Filter data for the first three months
         .enter()
         .append("circle")
         .attr("class", "circle-2024")
-        .attr("cx", function(d) { return xScale(d.month); })
-        .attr("cy", function(d) { return yScale(d["2024"]); })
+        .attr("cx", function(d) { 
+            return xScale(d.month); 
+        })
+        .attr("cy", function(d) { 
+            return yScale(d["2024"]); 
+        })
         .attr("r", 4)
         .style("fill", "#000080")
         .style("stroke-width", 0);
@@ -460,13 +547,19 @@ function Reset() {
     // Set the x and y scale.
     var xScale = d3.scaleTime()
         .domain([
-            d3.min(dataset2, function(d) { return d.date; }),
-            d3.max(dataset2, function(d) { return d.date; })
+            d3.min(dataset2, function(d) { 
+                return d.date; 
+            }),
+            d3.max(dataset2, function(d) { 
+                return d.date; 
+            })
         ])
         .range([padding, w - padding]);
 
     var yScale = d3.scaleLinear()
-        .domain([0, d3.max(dataset2, function(d) { return d.value; })])
+        .domain([0, d3.max(dataset2, function(d) { 
+            return d.value; 
+        })])
         .range([h - padding, padding]);
 
     var xAxis = d3.axisBottom()
@@ -482,8 +575,12 @@ function Reset() {
         .attr("class", "hline")
         .attr("x1", padding)
         .attr("x2", w - padding)
-        .attr("y1", function(d) { return yScale(d); })
-        .attr("y2", function(d) { return yScale(d); })
+        .attr("y1", function(d) { 
+            return yScale(d); 
+        })
+        .attr("y2", function(d) { 
+            return yScale(d); 
+        })
         .style("stroke", "#ddd")
         .style("stroke-width", 0.5);
 
@@ -492,8 +589,12 @@ function Reset() {
         .data(xScale.ticks())
         .enter().append("line")
         .attr("class", "vline")
-        .attr("x1", function(d) { return xScale(d); })
-        .attr("x2", function(d) { return xScale(d); })
+        .attr("x1", function(d) { 
+            return xScale(d); 
+        })
+        .attr("x2", function(d) { 
+            return xScale(d); 
+        })
         .attr("y1", padding)
         .attr("y2", h - padding)
         .style("stroke", "#ddd")
@@ -511,8 +612,12 @@ function Reset() {
 
     // Draw line
     var line = d3.line()
-        .x(function(d) { return xScale(d.date); }) 
-        .y(function(d) { return yScale(d.value); });
+        .x(function(d) { 
+            return xScale(d.date); 
+        }) 
+        .y(function(d) { 
+            return yScale(d.value); 
+        });
 
     svg.append("path")
         .datum(dataset2)
@@ -521,7 +626,11 @@ function Reset() {
         .attr("fill", "none") // Changed to "none" for line chart
         .style("stroke", "#CC0000")
         .style("stroke-width", 2.5);
+
+    
 }
+
+
 
 
 
