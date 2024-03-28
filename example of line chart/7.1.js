@@ -36,6 +36,7 @@ d3.csv("migration in a different format.csv", function(d) {
 });
 
 
+// Function to create a line chart with gridlines, axes, and tooltips
 function lineChart(dataset2) {
     // Set the x and y scale.
     var xScale = d3.scaleTime()
@@ -106,17 +107,17 @@ function lineChart(dataset2) {
         .style("stroke", "#CC0000")
         .style("stroke-width", 2.5);
 
-      // Add a tooltip div for displaying data points
+    // Add a tooltip div for displaying data points
     var tooltip = d3.select("body")
-    .append("div")
-    .attr("class", "tooltip")
-    .style("position", "absolute")
-    .style("z-index", "10")
-    .style("visibility", "hidden")
-    .style("background-color", "white")
-    .style("border", "1px solid black")
-    .style("padding", "5px")
-    .text("Tooltip");
+        .append("div")
+        .attr("class", "tooltip")
+        .style("position", "absolute")
+        .style("z-index", "10")
+        .style("visibility", "hidden")
+        .style("background-color", "white")
+        .style("border", "1px solid black")
+        .style("padding", "5px")
+        .text("Tooltip");
 
     // Add event listener for mousemove
     svg.on("mousemove", function(event) {
@@ -155,6 +156,7 @@ function lineChart(dataset2) {
         tooltip.style("visibility", "hidden");
     });
 }
+
 
 
 function btn2021() {
@@ -363,7 +365,7 @@ function btn2022() {
         .attr("transform", "translate(" + padding + ",0)")
         .call(yAxis);
 
-    // Draw lines for 2021
+    // Draw lines for 2022
     var line = d3.line()
         .x(function(d) { 
             return xScale(d.month); 
@@ -499,7 +501,7 @@ function btn2023() {
         .attr("transform", "translate(" + padding + ",0)")
         .call(yAxis);
 
-    // Draw lines for 2021
+    // Draw lines for 2023
     var line = d3.line()
         .x(function(d) { 
             return xScale(d.month); 
@@ -635,7 +637,7 @@ function btn2024() {
         .attr("transform", "translate(" + padding + ",0)")
         .call(yAxis);
 
-    // Draw lines for 2021
+    // Draw lines for 2024
     var line = d3.line()
         .x(function(d) { 
             return xScale(d.month); 
