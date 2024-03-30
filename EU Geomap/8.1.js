@@ -97,11 +97,11 @@ Promise.all([d3.json("europe_.geojson"), d3.csv("Book1.csv")])
         const countryName = d.properties.name;
         const value = dataMap[countryName];
         if (value >= 0 && value <= 100000) {
-          return "blue";
-        } else if (value >= 100001 && value <= 500000) {
-          return "red";
-        } else if (value >= 500001 && value <= 2000000) {
           return "orange";
+        } else if (value >= 100001 && value <= 500000) {
+          return "#ff6a00";
+        } else if (value >= 500001 && value <= 2000000) {
+          return "#eb2838";
         } else {
           return "gray";
         }
