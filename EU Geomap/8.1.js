@@ -25,64 +25,16 @@ const tooltip = d3
   .attr("id", "tooltip")
   .style("visibility", "hidden");
 
-// Load and render GeoJSON data
-Promise.all([d3.json("europe_.geojson"), d3.csv("Book1.csv")])
+// Load and render GeoJSON data and CSV data
+Promise.all([d3.json("europe_.geojson"), d3.csv("data.csv")])
   .then(function (files) {
     const json = files[0];
-    const data = [
-      { countryname: "Poland", number: 1640510 },
-      { countryname: "Russia", number: 1212585 },
-      { countryname: "Ukraine", number: 1212585 },
-      { countryname: "Serbia", number: 77474 },
-      { countryname: "Macedonia", number: 25713 },
-      { countryname: "Germany", number: 1125950 },
-      { countryname: "Czech Republic", number: 547670 },
-      { countryname: "United Kingdom", number: 21080 },
-      { countryname: "Spain", number: 186045 },
-      { countryname: "Bulgaria", number: 168570 },
-      { countryname: "Italy", number: 163570 },
-      { countryname: "Moldova", number: 116615 },
-      { countryname: "Romania", number: 106786 },
-      { countryname: "Slovakia", number: 107415 },
-      { countryname: "Netherlands", number: 94415 },
-      { countryname: "Ireland", number: 91330 },
-      { countryname: "Austria", number: 81870 },
-      { countryname: "France", number: 70570 },
-      { countryname: "Belgium", number: 700435 },
-      { countryname: "Switzerland", number: 65555 },
-      { countryname: "Estonia", number: 63850 },
-      { countryname: "Finland", number: 61060 },
-      { countryname: "Portugal", number: 56995 },
-      { countryname: "Lithuania", number: 48425 },
-      { countryname: "Sweden", number: 56165 },
-      { countryname: "Norway", number: 56970 },
-      { countryname: "Latvia", number: 43592 },
-      { countryname: "Turkey", number: 41390 },
-      { countryname: "Denmark", number: 41155 },
-      { countryname: "Montenegro", number: 37050 },
-      { countryname: "Belarus", number: 37000 },
-      { countryname: "Hungary", number: 33316 },
-      { countryname: "Georgia", number: 27000 },
-      { countryname: "Greece", number: 25050 },
-      { countryname: "Croatia", number: 23035 },
-      { countryname: "Cyprus", number: 18225 },
-      { countryname: "North Macedonia", number: 17315 },
-      { countryname: "Slovenia", number: 10140 },
-      { countryname: "Luxembourg", number: 6065 },
-      { countryname: "Albania", number: 7495 },
-      { countryname: "Azerbaijan", number: 4555 },
-      { countryname: "Serbia and Kosovo", number: 4245 },
-      { countryname: "Iceland", number: 3910 },
-      { countryname: "Malta", number: 2115 },
-      { countryname: "Armenia", number: 605 },
-      { countryname: "Liechtenstein", number: 580 },
-      { countryname: "Bosnia and Herzegovina", number: 215 },
-    ];
+    const csvData = files[1];
 
     // Create a dictionary to map country names to data values
     const dataMap = {};
-    data.forEach(function (d) {
-      dataMap[d.countryname.trim()] = d.number; // Trimming whitespace from country name
+    csvData.forEach(function (d) {
+      dataMap[d.countryname.trim()] = +d.number; // Trimming whitespace from country name and converting number to numeric type
     });
 
     // Draw GeoJSON features
@@ -97,11 +49,11 @@ Promise.all([d3.json("europe_.geojson"), d3.csv("Book1.csv")])
         const countryName = d.properties.name;
         const value = dataMap[countryName];
         if (value >= 0 && value <= 100000) {
-          return "orange";
+          return "blue";
         } else if (value >= 100001 && value <= 500000) {
-          return "#ff6a00";
+          return "red";
         } else if (value >= 500001 && value <= 2000000) {
-          return "#eb2838";
+          return "orange";
         } else {
           return "gray";
         }
