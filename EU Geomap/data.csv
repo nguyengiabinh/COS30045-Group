@@ -1,5 +1,9 @@
-Country Name,Number 
-Poland ,1640510
+countryname,number
+Poland,1640510
+Russia,1212585
+Ukraine,1212585
+Serbia,77474
+Macedonia,25713
 Germany,1125950
 Czech Republic,547670
 United Kingdom,21080
@@ -22,7 +26,7 @@ Lithuania,48425
 Sweden,56165
 Norway,56970
 Latvia,43592
-Turkiye,41390
+Turkey,41390
 Denmark,41155
 Montenegro,37050
 Belarus,37000
@@ -34,4 +38,11 @@ Cyprus,18225
 North Macedonia,17315
 Slovenia,10140
 Luxembourg,6065
-Russia,1212585
+Albania,7495
+Azerbaijan,4555
+Serbia and Kosovo,4245
+Iceland,3910
+Malta,2115
+Armenia,605
+Liechtenstein,580
+Bosnia and Herzegovina,215

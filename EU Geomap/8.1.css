@@ -3,13 +3,11 @@ body {
     margin: auto;
     min-width: 1000px;
     font-family: Arial, Helvetica, sans-serif;
-
 }
 
 h1 {
     font-weight: 1000;
     color: mediumseagreen;
-
 }
 
 .img {
@@ -24,4 +22,14 @@ h1 {
 
 footer {
     background-color: lightgrey;
+}
+#tooltip {
+    position: absolute;
+    text-align: center;
+    padding: 5px;
+    font: 12px sans-serif;
+    background: lightsteelblue;
+    border: 1px solid gray;
+    border-radius: 5px;
+    pointer-events: none;
 }
