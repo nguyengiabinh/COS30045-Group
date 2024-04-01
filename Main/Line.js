@@ -7,21 +7,22 @@ var lineContainer = d3.select(".line-container");
 
 // Get the width and height of the line container
 var containerWidth = lineContainer.node().getBoundingClientRect().width;
+var buttonColumnHeight = d3.select(".buttons").node().getBoundingClientRect().height;
 
 // Adjust projection settings based on container dimensions
-var scale = containerWidth ; // Adjust the scale factor as needed
-// var w = containerWidth;
-// var h = 380; // Adjust the vertical translation factor as needed
+var scale = containerWidth; // Adjust the scale factor as needed
+
 var w = containerWidth;
-var h = containerHeight / 2; // Adjust the vertical translation factor as needed
+var h = buttonColumnHeight;
 
 // Append the SVG element to the map container div
 var svgline = lineContainer
   .append("svg")
   .attr("preserveAspectRatio", "xMidYMid meet")
   .attr("class", "img1")
-  .attr("width", w)
-  .attr("height", h) // Use viewBox instead of fixed width and height
+  .attr("viewBox", `0 0 ${containerWidth} ${h}`);
+//   .attr("width", w)
+//   .attr("height", h) // Use viewBox instead of fixed width and height
 
 
 //returning the value of date and number field
