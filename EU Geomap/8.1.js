@@ -25,6 +25,18 @@ const tooltip = d3
   .attr("id", "tooltip")
   .style("visibility", "hidden");
 
+// Thêm tính năng zoom
+const zoom = d3.zoom()
+  .scaleExtent([1, 8]) // Giới hạn scale từ 1 đến 8
+  .on('zoom', function(event) {
+    g.attr('transform', event.transform);
+  });
+
+svg.call(zoom);
+
+// Thêm container <g> để chứa các thành phần của bản đồ
+const g = svg.append('g');
+
 // Load and render GeoJSON data and CSV data
 Promise.all([d3.json("europe_.geojson"), d3.csv("data.csv")])
   .then(function (files) {
@@ -37,9 +49,8 @@ Promise.all([d3.json("europe_.geojson"), d3.csv("data.csv")])
       dataMap[d.countryname.trim()] = +d.number; // Trimming whitespace from country name and converting number to numeric type
     });
 
-    // Draw GeoJSON features
-    svg
-      .selectAll("path")
+    // Draw GeoJSON features bên trong container <g>
+    g.selectAll("path")
       .data(json.features)
       .enter()
       .append("path")
@@ -48,7 +59,7 @@ Promise.all([d3.json("europe_.geojson"), d3.csv("data.csv")])
       .style("fill", function (d) {
         const countryName = d.properties.name;
         const value = dataMap[countryName];
-         if (value >= 0 && value <= 100000) {
+        if (value >= 1 && value <= 100000) {
           return "#4cc3e0";
         } else if (value >= 100001 && value <= 500000) {
           return "#4690a3";
@@ -63,7 +74,6 @@ Promise.all([d3.json("europe_.geojson"), d3.csv("data.csv")])
         const value = dataMap[countryName];
         d3.select(this)
           .style("transform-origin", "center center")
-
           .transition()
           .duration(300)
           .attr("transform", "scale(1.1)");
@@ -73,11 +83,8 @@ Promise.all([d3.json("europe_.geojson"), d3.csv("data.csv")])
           .style("visibility", "visible")
           .text(countryName + ": " + value);
       })
-
       .on("mouseout", function () {
         d3.select(this)
-          .style("opacity", 1)
-
           .transition()
           .duration(300)
           .attr("transform", "scale(1)");
