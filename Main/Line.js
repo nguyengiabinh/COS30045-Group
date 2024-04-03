@@ -21,9 +21,9 @@ var svgline = lineContainer
   .attr("preserveAspectRatio", "xMidYMid meet")
   .attr("class", "img1")
   .attr("viewBox", `0 0 ${containerWidth} ${h}`);
-//   .attr("width", w)
-//   .attr("height", h) // Use viewBox instead of fixed width and height
 
+var formatDate = d3.timeFormat("%B %Y"); 
+var months = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
 
 //returning the value of date and number field
 d3.csv("migration from ukraine 2021-2024.csv", function(d) {
@@ -73,7 +73,19 @@ function lineChart(dataset2) {
         .ticks(4);
 
     var yAxis = d3.axisRight()
-        .scale(yScale);
+        .scale(yScale)
+        .tickFormat(function(d) {
+            return d === 0 ? "" : d3.format(".2s")(d);
+        });
+    
+        // Y-axis label
+    svgline.append("text")
+        .attr("transform", "rotate(-90)") // Rotate the text for vertical orientation
+        .attr("y", 0) // Position to the left of the Y-axis
+        .attr("x",0 - (h / 2)) // Center the text by setting it to half of the height
+        .attr("dy", "1em") // Adjust distance from the axis
+        .style("text-anchor", "middle") // Center the text
+        .text("Number of Refugees");
 
     // Draw horizontal gridlines
     svgline.selectAll(".hline")
@@ -168,7 +180,7 @@ function lineChart(dataset2) {
             .style("left", (event.pageX + 10) + "px")
             .style("top", (event.pageY - 28) + "px")
             .style("visibility", "visible")
-            .html("Date: " + closestPoint.date.toDateString() + "<br/>Value: " + closestPoint.value);
+            .html("Date: " + formatDate(closestPoint.date) + "<br/>Value: " + closestPoint.value);
     })
     .on("mouseout", function() {
         svgline.selectAll(".circle").remove(); // Hide the tooltip and remove the circle
@@ -176,9 +188,6 @@ function lineChart(dataset2) {
     });
 
 }
-
-
-
 
 function btn2021() {
     // Remove existing elements from the SVG
@@ -202,12 +211,19 @@ function btn2021() {
 
     // Create a x bottom axis line
     var xAxis = d3.axisBottom()
-        .scale(xScale);
+        .scale(xScale)
+        .tickFormat(function(d, i) {
+            return months[d - 1]; // Convert month numbers to month names
+        })
+        .ticks(12);
 
     // Create a Left-hand side y axis
     var yAxis = d3.axisRight()
         .scale(yScale)
-        .ticks(4);
+        .ticks(4)
+        .tickFormat(function(d) {
+            return d === 0 ? "" : d3.format(".2s")(d);
+        });
 
     // Draw horizontal gridlines
     svgline.selectAll(".hline")
@@ -322,7 +338,7 @@ function btn2021() {
       .style("left", (event.pageX + 10) + "px")
       .style("top", (event.pageY - 28) + "px")
       .style("visibility", "visible")
-      .html("Month: " + closestPoint.month + "<br/>Number: " + closestPoint["2021"]);
+      .html("Month: " + months[closestPoint.month - 1] + "<br/>Number: " + closestPoint["2021"]);
   })
   .on("mouseout", function() {
     svgline.selectAll(".circle").remove(); // Hide the tooltip and remove the circle
@@ -364,12 +380,19 @@ function btn2022() {
 
     // Create a x bottom axis line
     var xAxis = d3.axisBottom()
-        .scale(xScale);
+        .scale(xScale)
+        .tickFormat(function(d, i) {
+            return months[d - 1]; // Convert month numbers to month names
+        })
+        .ticks(12);
 
     // Create a Left-hand side y axis
     var yAxis = d3.axisRight()
         .scale(yScale)
-        .ticks(4);
+        .ticks(4)
+        .tickFormat(function(d) {
+            return d === 0 ? "" : d3.format(".2s")(d);
+        });
 
     // Draw horizontal gridlines
     svgline.selectAll(".hline")
@@ -483,7 +506,7 @@ function btn2022() {
       .style("left", (event.pageX + 10) + "px")
       .style("top", (event.pageY - 28) + "px")
       .style("visibility", "visible")
-      .html("Month: " + closestPoint.month + "<br/>Number: " + closestPoint["2022"]);
+      .html("Month: " + months[closestPoint.month - 1] + "<br/>Number: " + closestPoint["2022"]);
   })
   .on("mouseout", function() {
     svgline.selectAll(".circle").remove(); // Hide the tooltip and remove the circle
@@ -525,12 +548,19 @@ function btn2023() {
 
     // Create a x bottom axis line
     var xAxis = d3.axisBottom()
-        .scale(xScale);
+        .scale(xScale)
+        .tickFormat(function(d, i) {
+            return months[d - 1]; // Convert month numbers to month names
+        })
+        .ticks(12);
 
     // Create a Left-hand side y axis
     var yAxis = d3.axisRight()
         .scale(yScale)
-        .ticks(4);
+        .ticks(4)
+        .tickFormat(function(d) {
+            return d === 0 ? "" : d3.format(".2s")(d);
+        });
 
     // Draw horizontal gridlines
     svgline.selectAll(".hline")
@@ -644,7 +674,7 @@ function btn2023() {
       .style("left", (event.pageX + 10) + "px")
       .style("top", (event.pageY - 28) + "px")
       .style("visibility", "visible")
-      .html("Month: " + closestPoint.month + "<br/>Number: " + closestPoint["2023"]);
+      .html("Month: " + months[closestPoint.month - 1] + "<br/>Number: " + closestPoint["2023"]);
   })
   .on("mouseout", function() {
     svgline.selectAll(".circle").remove(); // Hide the tooltip and remove the circle
@@ -685,12 +715,19 @@ function btn2024() {
 
     // Create a x bottom axis line
     var xAxis = d3.axisBottom()
-        .scale(xScale);
+        .scale(xScale)
+        .tickFormat(function(d, i) {
+            return months[d - 1]; // Convert month numbers to month names
+        })
+        .ticks(12);
 
     // Create a Left-hand side y axis
     var yAxis = d3.axisRight()
         .scale(yScale)
-        .ticks(4);
+        .ticks(4)
+        .tickFormat(function(d) {
+            return d === 0 ? "" : d3.format(".2s")(d);
+        });
 
     // Draw horizontal gridlines
     svgline.selectAll(".hline")
@@ -806,7 +843,7 @@ function btn2024() {
       .style("left", (event.pageX + 10) + "px")
       .style("top", (event.pageY - 28) + "px")
       .style("visibility", "visible")
-      .html("Month: " + closestPoint.month + "<br/>Number: " + closestPoint["2024"]);
+      .html("Month: " + months[closestPoint.month - 1] + "<br/>Number: " + closestPoint["2024"]);
   })
   .on("mouseout", function() {
     svgline.selectAll(".circle").remove(); // Hide the tooltip and remove the circle
@@ -856,7 +893,10 @@ function Reset() {
         .ticks(4);
 
     var yAxis = d3.axisRight()
-        .scale(yScale);
+        .scale(yScale)
+        .tickFormat(function(d) {
+            return d === 0 ? "" : d3.format(".2s")(d);
+        });
 
     // Draw horizontal gridlines
     svgline.selectAll(".hline")
@@ -951,7 +991,7 @@ function Reset() {
             .style("left", (event.pageX + 10) + "px")
             .style("top", (event.pageY - 28) + "px")
             .style("visibility", "visible")
-            .html("Date: " + closestPoint.date.toDateString() + "<br/>Value: " + closestPoint.value);
+            .html("Date: " + formatDate(closestPoint.date) + "<br/>Value: " + closestPoint.value);
     })
     .on("mouseout", function() {
         svgline.selectAll(".circle").remove(); // Hide the tooltip and remove the circle
