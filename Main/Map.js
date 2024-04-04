@@ -160,8 +160,10 @@ d3.csv("refugee.csv").then(function(data) {
     // Define legend items
     var legendItems = [
       { label: "< 100,000", color: "#CDF8FF" },
-      { label: "100,000 - 500,000", color: "#4fa0c2" },
-      { label: "500,000 - 2,000,000", color: "#005180" },
+      { label: "100,000 - 300,000", color: "#87CEEB" },
+      { label: "300,000 - 500,000", color: "#4169E1" },
+      { label: "500,000 - 1,000,000", color: "#0000CD" },
+      { label: "> 1,000,000", color: "#005180" },
       { label: "Data Unavailable", color: "lightgray" }
     ];
 

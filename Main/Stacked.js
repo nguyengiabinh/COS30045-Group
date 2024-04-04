@@ -23,7 +23,7 @@ var svgstack = stackedcontainer
     .append("svg")
     .attr("preserveAspectRatio", "xMidYMid meet")
     .attr("class", "img")
-    .attr("viewBox", "-30 -25 " + svgWidth + " " + svgHeight);
+    .attr("viewBox", "-30 15 " + svgWidth + " " + svgHeight);
 
 
 ////////////////////////////////////////////////////////////////////////////////
