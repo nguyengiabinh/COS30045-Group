@@ -69,6 +69,7 @@ Promise.all([d3.json("europe_.geojson"), d3.csv("data.csv")])
           return "gray";
         }
       })
+      
       .on("mouseover", function (event, d) {
         const countryName = d.properties.name;
         const value = dataMap[countryName];
@@ -91,6 +92,38 @@ Promise.all([d3.json("europe_.geojson"), d3.csv("data.csv")])
         tooltip.style("visibility", "hidden");
       });
   })
+  // Define legend data
+const legendData = [
+  { label: "1 - 100,000", color: "#4cc3e0" },
+  { label: "100,001 - 500,000", color: "#4690a3" },
+  { label: "500,001 - 2,000,000", color: "#297d91" },
+  { label: "No Data", color: "gray" }
+];
+
+// Add legend
+const legend = svg.append("g")
+  .attr("class", "legend")
+  .attr("transform", "translate(20, 20)"); // Adjust position as needed
+
+legend.selectAll("rect")
+  .data(legendData)
+  .enter()
+  .append("rect")
+  .attr("x", 0)
+  .attr("y", function(d, i) { return i * 25; })
+  .attr("width", 20)
+  .attr("height", 20)
+  .style("fill", function(d) { return d.color; });
+
+legend.selectAll("text")
+  .data(legendData)
+  .enter()
+  .append("text")
+  .attr("x", 30)
+  .attr("y", function(d, i) { return i * 25 + 14; })
+  .text(function(d) { return d.label; })
+  .attr("font-size", "14px")
+
   .catch(function (error) {
     // Handle errors
     console.log("Error loading data:", error);
