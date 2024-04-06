@@ -82,7 +82,10 @@ var svgstack = stackedcontainer
         // Create a bottom x axis
         var xAxis = d3.axisBottom()
             .scale(xScale)
-            .ticks(6);
+            .ticks(6)
+            .tickFormat(function(d) {
+                return d === 0 ? "" : d3.format(".2s")(d);
+            });
     
         // Create a left y axis
         var yAxis = d3.axisLeft()
@@ -234,7 +237,10 @@ function Age_Group_Chart(data) {
     // Create a bottom x axis
     var xAxis = d3.axisBottom()
         .scale(xScale)
-        .ticks(6);
+        .ticks(6)
+        .tickFormat(function(d) {
+            return d === 0 ? "" : d3.format(".2s")(d);
+        });
 
     // Create a left y axis
     var yAxis = d3.axisLeft()
@@ -389,7 +395,10 @@ function Gender_chart() {
         // Create a bottom x axis
         var xAxis = d3.axisBottom()
         .scale(xScale)
-        .ticks(6);
+        .ticks(6)
+        .tickFormat(function(d) {
+            return d === 0 ? "" : d3.format(".2s")(d);
+        });
 
         // Create a left y axis
         var yAxis = d3.axisLeft()
